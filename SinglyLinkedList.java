@@ -1,7 +1,7 @@
-puplic class SinglyLinkedList{
-    privete Node head;
-    privete Node tail;
-    privete int size;
+public class SinglyLinkedList{
+    private Node head;
+    private Node tail;
+    private int size;
 
     puplic SinglyLinkedList(){
         head = null;
@@ -9,28 +9,40 @@ puplic class SinglyLinkedList{
         size = 0;
 
     }
-    puplic int getSize(){
+    public int getSize(){
         return size;
     }
-    puplic Node getFirst(){
+    public Node getFirst(){
         return head;
     }
-    puplic Node getLast(){
+    public Node getLast(){
         return tail;
     }
-    puplic boolean isEmpty(){
+     boolean isEmpty(){
         return size == 0;
     }
-    puplic void display(){
+    public void display(){
         Node c = new Node();
         c = head;
-        While(c != null){
-            System.out.print(c.getData()+" ");
+        while (c != null){
+            System.out.print(c.getData + " ");
             c = c.getNext();
         }
+        System.out.println();
+    }
+    public boolean isThere(E key){
+        Node c = head;
+        while(c != null){
+            if(c.getData() == key){
+                return true;
+            }
+            c = c.getNext();
+        }
+        return false;
+
     }
 
-    puplic void addFirst(E e){
+    public void addFirst(E e){
         Node newest = new Node(e);
         newest.setNext(head);
         head = newest;
@@ -40,7 +52,7 @@ puplic class SinglyLinkedList{
         size ++;
 
     }
-    puplic void addLast(E e){
+    public void addLast(E e){
         if(isEmpty()){
             addFirst(e);
         }else{
@@ -51,14 +63,66 @@ puplic class SinglyLinkedList{
         }
 
     }
-    puplic void removeFirst(){
+    public void addMiddle(E e , E key){
+        if(isEmpty()){
+            addFirst(e);
+        }else{
+            if(isThere(key)){
+            Node newest = new Node(e);
+            Node c = head;
+            while(c.getData() != key){
+                c = c.getNext();
+            }
+            newest.setNext(c.getNext());
+            c.setNext(newest);
+            size++;
+           } else{
+            System.out.println("the key is not found");
+           }
+            
+        }
+
+    }
+    public void removeFirst(){
         if(isEmpty()){
             return;
         }
         head = head.getNext();
+        siz--;
     }
-    puplic void removeLast(){
-        
+    public void removeLast(){
+        if(isEmpty()){
+            System.out.println("the list is empty");
+        }
+        else if(head.getNext() == null){
+            head = null;
+        }else{
+            Node c = head;
+            while(head.getNext().getNext() != null){
+                c = c.getNext();
+            }
+            c.setNext(null);
+            tail = c;
+            
+        }
+        size--;
+
+
+    }
+    public void removeMiddle(E key){
+      if(isEmpty()){
+        System.out.println("the list is empty");
+
+      } else if(head.getData()== key){
+        removeFirst();
+      }else{
+        Node c = head;
+        while(head.getNext().getNext().getData() != key){
+            c = c.getNext();
+        }
+         c .setNext(c.getNext().getNext());
+      }
+
     }
 
 }

@@ -1,7 +1,9 @@
-puplic class Node<E>{
+import org.w3c.dom.Node;
 
-  privete E data;
-  privete Node next;
+public class Node<E>{
+
+  private E data;
+  private Node next;
 
   puplic Node(){
      data = null;
@@ -17,16 +19,16 @@ puplic class Node<E>{
     this.next = next;
   }
 
-  puplic void setData(E data){
-    this.data = data
+  public void setData(E data){
+    this.data = data;
   }
-  puplic void setNext(Node next){
+  public void setNext(Node next){
     this.next = next;
   }
-  puplic E getData(){
+  public E getData(){
     return data;
   }
-  puplic Node getNext(){
+  public Node getNext(){
     return next;
   }
 
