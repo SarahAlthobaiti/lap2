@@ -1,9 +1,10 @@
-public class SinglyLinkedList{
+//Student Name: Sarah Mohamed Althobiti , Student ID: 444004881
+public class SinglyLinkedList<E>{
     private Node head;
     private Node tail;
     private int size;
 
-    puplic SinglyLinkedList(){
+    public SinglyLinkedList(){
         head = null;
         tail = null;
         size = 0;
@@ -25,7 +26,7 @@ public class SinglyLinkedList{
         Node c = new Node();
         c = head;
         while (c != null){
-            System.out.print(c.getData + " ");
+            System.out.print(c.getData() + " ");
             c = c.getNext();
         }
         System.out.println();
@@ -88,7 +89,7 @@ public class SinglyLinkedList{
             return;
         }
         head = head.getNext();
-        siz--;
+        size--;
     }
     public void removeLast(){
         if(isEmpty()){
@@ -98,12 +99,11 @@ public class SinglyLinkedList{
             head = null;
         }else{
             Node c = head;
-            while(head.getNext().getNext() != null){
+            while(c.getNext().getNext() != null){
                 c = c.getNext();
             }
             c.setNext(null);
             tail = c;
-            
         }
         size--;
 
@@ -116,11 +116,17 @@ public class SinglyLinkedList{
       } else if(head.getData()== key){
         removeFirst();
       }else{
+        if(isThere(key)){
         Node c = head;
-        while(head.getNext().getNext().getData() != key){
+        while(c.getNext().getData() != key ){
             c = c.getNext();
         }
-         c .setNext(c.getNext().getNext());
+         Node temp = c.getNext();
+         c.setNext(temp.getNext());
+         size--;
+        }else{
+            System.out.println("not found");
+        }
       }
 
     }

@@ -1,20 +1,19 @@
-import org.w3c.dom.Node;
-
+//Student Name: Sarah Mohamed Althobiti , Student ID: 444004881
 public class Node<E>{
 
   private E data;
   private Node next;
 
-  puplic Node(){
+  public Node(){
      data = null;
      next = null;
   }
-  puplic Node(E data){
+  public Node(E data){
     this.data = data;
     this.next = null;
      
   }
-  puplic Node(E data, Node next){
+  public Node(E data, Node next){
     this.data = data;
     this.next = next;
   }
